@@ -39,7 +39,7 @@ git clone 'https://github.com/Borjis131/docker-open5gs.git'
 # 
 sed -i 's/DOCKER_HOST_IP=.*/DOCKER_HOST_IP=10.0.2.15/' ~/docker-open5gs/.env
 # Docker + Docker compose setup
-sudo apt -y install docker-compose docker-compose-v2 docker-buildx
+sudo apt -y install docker-compose docker-compose-v2 docker-buildx make
 cd ~/docker-open5gs
 #Even make needs root in order to connect to the docker daemon
 sudo make base-open5gs
