@@ -49,9 +49,28 @@ if [[ $? -ne 0 ]]; then
 	exit
 fi
 log "BUILD SUCCESS!"
+log "Setting up Kernel Module for PacketRusher"
+# Installed kernel module from directions here: https://github.com/HewlettPackard/PacketRusher
+git clone https://github.com/HewlettPackard/PacketRusher 
+cd PacketRusher && echo "export PACKETRUSHER=$PWD" >> $HOME/.profile
+source $HOME/.profile
+cd $PACKETRUSHER/lib/gtp5g
+make clean && make && sudo make install
+
+log "Setting up Mongosh for UE Adding"
+# Install mongosh from https://www.mongodb.com/try/download/shell
+wget https://downloads.mongodb.com/compass/mongodb-mongosh_2.4.0_amd64.deb
+sudo dpkg -i ./mongodb-mongosh_2.4.0_amd64.deb
+
+log "Setting up Open5gs DB Editor"
+cd ~; git clone 'https://github.com/open5gs/open5gs'
+# Note using https://github.com/open5gs/open5gs/blob/main/misc/db/README.md to look at the db
+# Default slice selection doesn't work with "add" - it's set to nothing when you add a subscriber but it should be 000001 for sd
+./open5gs/open5gs-dbctl add_ue_with_slice 001011234567891 00000000000000000000000000000000 00000000000000000000000000000000 "internet" 1 000001
+
 log "Proceeding with Docker compose..."
 # Example using the basic deployment
-sudo docker compose -f compose-files/basic/docker-compose.yaml --env-file=.env up -d
+sudo docker compose -f compose-files/internal/packetrusher/docker-compose.yaml --env-file=.env up -d
 if [[ $? -ne 0 ]]; then
 	log "Non 0 exit code from make detected. Bailing out..."
 	exit
@@ -60,4 +79,13 @@ fi
 # To shutdown instances... 
 log "BUILD COMPLETE!"
 log "To Shutdown instances use: sudo docker compose -f compose-files/basic/docker-compose.yaml stop"
+log "Run: sudo docker logs packetrusher"
+log "It should show 'You can do traffic for this UE using VRF....'"
+log "If it does, you are ready to start generating UE traffic"
+log "sudo docker exec -it packetrusher bash"
+log "(from within the packetrusher container)"
+log "ip vrf exec vrf1234567891 bash"
+log "(from within the vrf)"
+log "ping 9.9.9.9"
+log "(packet captures will show all of the steps of the simulated UE traffic going through the 5g workflow)"
 # Read docs here: https://github.com/Borjis131/docker-open5gs/blob/main/docs/configuration.md (Database configuration)
