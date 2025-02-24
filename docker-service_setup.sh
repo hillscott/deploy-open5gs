@@ -27,7 +27,6 @@ if [[ -f /var/run/reboot-required ]]; then
 	log "Re-run this script after you have rebooted."
 	exit
 fi
-exit
 # Open5GS Prep
 cd ~
 sudo apt install git vim
