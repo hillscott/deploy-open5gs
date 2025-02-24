@@ -29,7 +29,7 @@ if [[ -f /var/run/reboot-required ]]; then
 fi
 # Open5GS Prep
 cd ~
-sudo apt install git vim wget
+sudo apt -y install git vim wget
 git clone 'https://github.com/Borjis131/docker-open5gs.git'
 # TODO: 
 # Set the host to a static IP of the NAT IP assigned (10.0.2.15/24 gw: 10.0.2.2) dns 9.9.9.9
@@ -50,7 +50,7 @@ fi
 log "BUILD SUCCESS!"
 log "Setting up Kernel Module for PacketRusher"
 cd ~
-sudo apt install gcc
+sudo apt -y install gcc
 # Installed kernel module from directions here: https://github.com/HewlettPackard/PacketRusher
 git clone https://github.com/HewlettPackard/PacketRusher 
 cd PacketRusher && echo "export PACKETRUSHER=$PWD" >> $HOME/.profile
