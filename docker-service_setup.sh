@@ -29,7 +29,7 @@ if [[ -f /var/run/reboot-required ]]; then
 fi
 # Open5GS Prep
 cd ~
-sudo apt install git vim
+sudo apt install git vim wget
 git clone 'https://github.com/Borjis131/docker-open5gs.git'
 # TODO: 
 # Set the host to a static IP of the NAT IP assigned (10.0.2.15/24 gw: 10.0.2.2) dns 9.9.9.9
