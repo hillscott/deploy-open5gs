@@ -84,7 +84,7 @@ sudo docker start packetrusher
 
 # To shutdown instances... 
 log "BUILD COMPLETE!"
-log "To Shutdown instances use: sudo docker compose -f ./docker-open5gs/compose-files/basic/docker-compose.yaml stop"
+log "To Shutdown instances use: sudo docker compose -f ./docker-open5gs/compose-files/internal/packetrusher/docker-compose.yaml stop"
 log "Run: sudo docker logs packetrusher"
 log "It should show 'You can do traffic for this UE using VRF....'"
 log "If it does, you are ready to start generating UE traffic"
