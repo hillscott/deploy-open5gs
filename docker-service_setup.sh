@@ -20,6 +20,20 @@ has_sudo_access() {
 	log "Access checks passed."
 }
 has_sudo_access
+# IP Address setup...
+IntOut=`ip route | grep default | awk '{print $5}'`
+IPOut=`ip addr show $IntOut |grep -oP '(?<=inet\s)(\d+\.\d+\.\d+\.\d+)'`
+IPUser=""
+echo "I detected $IPOut as the IP to use for Docker. If this is correct, simply"echo "press enter."
+echo "If you would like to use a different IP, enter it now."
+echo "NOTE: It is recommended that this be a static IP!"
+read -p "IP Address: [${IPOut}]: " IPUser
+if [[ $IPUser == "" ]]; then
+	IPUser=$IPOut
+fi
+echo "IP: $IPUser Selected"
+
+# Updates
 sudo apt update
 sudo apt -y upgrade
 if [[ -f /var/run/reboot-required ]]; then
@@ -29,15 +43,12 @@ if [[ -f /var/run/reboot-required ]]; then
 fi
 # Open5GS Prep
 cd ~
-sudo apt -y install git vim wget
+sudo apt -y install git wget
 git clone 'https://github.com/Borjis131/docker-open5gs.git'
-# TODO: 
-# Set the host to a static IP of the NAT IP assigned (10.0.2.15/24 gw: 10.0.2.2) dns 9.9.9.9
-#
-# TODO:
-# Extract the active IP instead of assuming it
-# 
-sed -i 's/DOCKER_HOST_IP=.*/DOCKER_HOST_IP=10.0.2.15/' ~/docker-open5gs/.env
+
+#IP obtained in the first setup stages
+sed -i 's/DOCKER_HOST_IP=.*/DOCKER_HOST_IP=${IPUser}/' ~/docker-open5gs/.env
+
 # Docker + Docker compose setup
 sudo apt -y install docker-compose docker-compose-v2 docker-buildx make
 cd ~/docker-open5gs
@@ -57,11 +68,19 @@ cd PacketRusher && echo "export PACKETRUSHER=$PWD" >> $HOME/.profile
 source $HOME/.profile
 cd $PACKETRUSHER/lib/gtp5g
 make clean && make && sudo make install
+if [[ $? -ne 0 ]]; then
+	log "Non 0 exit code from make detected. Bailing out..."
+	exit
+fi
 
 log "Setting up Mongosh for UE Adding"
 # Install mongosh from https://www.mongodb.com/try/download/shell
 cd ~; wget https://downloads.mongodb.com/compass/mongodb-mongosh_2.4.0_amd64.deb
 sudo dpkg -i ./mongodb-mongosh_2.4.0_amd64.deb
+if [[ $? -ne 0 ]]; then
+	log "Non 0 exit code from dpkg -i detected. Bailing out..."
+	exit
+fi
 
 
 log "Proceeding with Docker compose..."
