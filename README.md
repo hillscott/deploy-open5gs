@@ -1,5 +1,7 @@
 ## ⚠️ Disclaimer  
-The scripts in this repository are meant to take a brand new Ubuntu 24.04 Install, and turn it into a fully functional Dokerized Open5GS Stack. It is *strongly* recommended that you do this in a VM. **MANY** packages will be installed as part of the installation process, and any existing Docker / Open5GS Installations will almost certainly end up broken if they already exist. The script will also run a **FULL Ubuntu OS Update wherever you run it** Again...
+The scripts in this repository are meant to take a brand new Ubuntu 24.04 Install, and turn it into a fully functional Dokerized Open5GS Stack. It is *strongly* recommended that you do this in a VM. **MANY** packages will be installed as part of the installation process, and any existing Docker / Open5GS Installations will almost certainly end up broken if they already exist. 
+
+The script will also run a **FULL Ubuntu OS Update wherever you run it** Again...
 Do **NOT** Run this on your main Ubuntu 24.04 day-to-day workstation. Use a VM. **You have been warned.**
 
 Also: The Dockerized Open5GS installation has many default 100% *insecure* settings. Only use this stack for educational purposes unless and until you are able to modify most if not *all* default settings. 
