@@ -33,7 +33,9 @@ The script will prompt you to confirm the IP address you would like to use for t
 Once the IP address is confirmed, it will begin a full Operating System update, prior to continuing with the Dockerized Open5GS stack setup and all of the necessary components. The build will take a long time, depending on your hardware and network connection. At the end, you will be provided with a means to test the installation. Documentation linked here will also discuss that. 
 
 ## Docs
-*TBD*
+See: 
+* [COMMANDS.md]
+* [CONFIGS.md]
 
 ## References
 *TBD*
