@@ -34,8 +34,8 @@ Once the IP address is confirmed, it will begin a full Operating System update, 
 
 ## Docs
 See: 
-* [COMMANDS.md]
-* [CONFIGS.md]
+* [COMMANDS.md](./COMMANDS.md)
+* [CONFIGS.md](./CONFIGS.md)
 
 ## References
 *TBD*
