@@ -8,9 +8,9 @@ Also: The Dockerized Open5GS installation has many default 100% *insecure* setti
 
 # deploy-open5gs
 This repository serves as a means to automate and explain a Dockerized Open5GS installation. It provides a way for someone who has limited knowledge of how to interact with Ubuntu Linux or Docker, a means to utilize the excellent code provided by other repositories, including:
-* https://github.com/Borjis131/docker-open5gs.git (Provides most of the components required for a functional Open5GS server <-> client setup
-* https://github.com/HewlettPackard/PacketRusher (Used to add a necessary kernel module to your Ubuntu host)
-* https://github.com/open5gs/open5gs (Used for MongoDB manipulation -> to add a test client (aka UE in the 5G terminology)
+* [docker-open5gs](https://github.com/Borjis131/docker-open5gs.git) (Provides most of the components required for a functional Open5GS server <-> client setup)
+* [PacketRusher](https://github.com/HewlettPackard/PacketRusher) (Used to add a necessary kernel module to your Ubuntu host)
+* [open5gs](https://github.com/open5gs/open5gs) (Already included in the docker-open5gs repository mostly, but we use it for MongoDB manipulation and to add a test client (aka UE in the 5G terminology)
 
 It has only been tested with Ubuntu 24.04 and is unlikely to work on other platforms without modifcation. The main code lives in docker-service_setup.sh - the remainder of the repository will provide documentation for how to:
 * Use the script (see 🛠️ Usage)
