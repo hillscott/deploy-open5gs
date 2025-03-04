@@ -26,7 +26,7 @@ It has only been tested with Ubuntu 24.04 and is unlikely to work on other platf
 After git cloning the repository locally...
 ```
 chmod u+x ./docker-service_setup.sh
-./docker-sesrvice_setup.sh
+./docker-service_setup.sh
 ```
 The script will prompt you to confirm the IP address you would like to use for the Docker installation. This should be your local IP address. It will automatically detect it in most cases, but you are able to override the auto-detection if necessary. 
 
