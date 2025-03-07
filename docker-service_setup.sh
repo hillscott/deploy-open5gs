@@ -24,7 +24,8 @@ has_sudo_access
 IntOut=`ip route | grep default | awk '{print $5}'`
 IPOut=`ip addr show $IntOut |grep -oP '(?<=inet\s)(\d+\.\d+\.\d+\.\d+)'`
 IPUser=""
-echo "I detected $IPOut as the IP to use for Docker. If this is correct, simply"echo "press enter."
+echo "I detected $IPOut as the IP to use for Docker. If this is correct, simply"
+echo "press enter."
 echo "If you would like to use a different IP, enter it now."
 echo "NOTE: It is recommended that this be a static IP!"
 read -p "IP Address: [${IPOut}]: " IPUser
