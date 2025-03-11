@@ -43,3 +43,6 @@ Additional Components
 These components are integral to the functioning of Open5GS, working together to provide flexible 5G and 4G network capabilities. This architecture allows for the dynamic management of network resources, high data throughput, and the ability to introduce new services efficiently.
 
 ![image](https://github.com/user-attachments/assets/5eff503a-513a-4463-8744-c3358c0abfbe)
+Fig: Open5GS-Docker Implementation[https://www.mdpi.com/]
+![image](https://github.com/user-attachments/assets/e229f526-b7ea-4fa1-bf2a-0aacbe303e51)
+
