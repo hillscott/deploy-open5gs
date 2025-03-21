@@ -17,10 +17,20 @@ It has only been tested with Ubuntu 24.04 and is unlikely to work on other platf
 * Issue some basic ```docker``` and ```docker compose``` commands to interact with the Open5GS stack
 * Provide some background on the various Open5GS components (which each live in their own container) and their terminology
 
+## Why Docker?
+Docker containers take advantage of the NFV (Network Function Virtualization) present in 5G networks, to provide you the flexibility to keep each 5g component in an isolated environment, without the overhead associated with full virtualization. That's just one reason though, here are some more:
+* If you want to use this repository to split your 5g network across multiple docker hosts, you can do that - just make some edits to the Docker compose files.
+* If you want to look at the logs for _just_ the AMF function, that's easy - just use the docker logs command described in COMMANDS.md to pull those logs.
+* If you want to see the network traffic flow just to the AMF Docker container, that's easy - just capture traffic from the network interface for that container.
+There are many benefits to docker, but if you want to take the deployment further, Kubernetes deployment configurations are also available in the [docker-open5gs](https://github.com/Borjis131/docker-open5gs.git) repository.  
+
+## Why Open5gs?
+Do you want to understand how 5G networks work? There's no better way than to build your own. This repository, and the repositories already referenced will allow you to do that. If you want to connect your deployment up to a real eNodeB / gNodeB (Basestation), supported hardware is here: [Tested Hardware - Open5gs](https://open5gs.org/open5gs/docs/hardware/01-genodebs/). Bear in mind that this script creates a deployment with 0 security. As per the disclaimer, you would need to make _many_ changes to use this deployment in production.
+
 ## Requirements
 * An Ubuntu 24.04 VM with 30GB of disk space. The entire stack (including Ubuntu) will take ~15GB. 
 * 4-8 vCPUs
-* 12GB RAM allocated to the VM
+* 8-12GB RAM allocated to the VM
 
 ## 🛠️ Usage
 After git cloning the repository locally...
@@ -36,6 +46,7 @@ Once the IP address is confirmed, it will begin a full Operating System update, 
 See: 
 * [COMMANDS.md](./COMMANDS.md)
 * [CONFIGS.md](./CONFIGS.md)
+* [BACKGROUND.md](./BACKGROUND.md)
 
 ## References
 *TBD*
