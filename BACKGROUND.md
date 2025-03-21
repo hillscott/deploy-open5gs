@@ -50,7 +50,7 @@ These components are integral to the functioning of Open5GS, working together to
 More Background information on Open5gs and Docker can be found at the sources below:
 - R. Zhang, Y. Lin, S. Chen and Z. Mo, "A Multi-Node 5G Core Network Testbed Developed from Open5GS," 2023 9th International Conference on Computer and Communications (ICCC), Chengdu, China, 2023, pp. 1038-1043, doi: 10.1109/ICCC59590.2023.10507325
 - L. Mamushiane et al., "Towards Stress Testing Open5GS Core (UPF Node) On A 5G Standalone Testbed," 2023 IEEE AFRICON, Nairobi, Kenya, 2023, pp. 1-6, doi: 10.1109/AFRICON55910.2023.10293284
-- [https://github.com/Borjis131/docker-open5gs.git](docker-open5gs git repo)
-- [https://github.com/HewlettPackard/PacketRusher](HP PacketRusher git repo)
-- [https://github.com/open5gs/open5gs](Open5gs - The original git repo)
-- [https://open5gs.org/open5gs/docs/](Open5gs - Documentation)
+- [docker-open5gs git repo](https://github.com/Borjis131/docker-open5gs.git)
+- [HP PacketRusher git repo](https://github.com/HewlettPackard/PacketRusher)
+- [Open5gs - The original git repo](https://github.com/open5gs/open5gs)
+- [Open5gs - Documentation](https://open5gs.org/open5gs/docs/)
