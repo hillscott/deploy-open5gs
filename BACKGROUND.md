@@ -37,12 +37,20 @@ Open5GS is a software implementation of the 5G core network (5GC) and Evolved Pa
 - Key Functions: It selects the appropriate network slice instances for incoming sessions based on subscription and policy data.
 
 Additional Components
-- WebUI: Open5GS includes a Web-based User Interface for monitoring and managing the network.
+- WebUI: Open5GS includes a Web-based User Interface for monitoring and managing the UEs.
+  - The web UI is not implemented as part of this deployment though. You can find more information on it in the [Open5GS Build Docs](https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/) - See "Install the dependencies to run WebUI"
 - CLI: Command Line Interface tools for detailed management and troubleshooting of the network.
+  - The mongosh binary + the open5gs-dbctl script are used for UE management as part of this deployment.
 
 These components are integral to the functioning of Open5GS, working together to provide flexible 5G and 4G network capabilities. This architecture allows for the dynamic management of network resources, high data throughput, and the ability to introduce new services efficiently.
 
 ![image](https://github.com/user-attachments/assets/5eff503a-513a-4463-8744-c3358c0abfbe)
+(Note that HP's PacketRusher is used instead of UERANSIM)
 
-![image](https://github.com/user-attachments/assets/e229f526-b7ea-4fa1-bf2a-0aacbe303e51)
-
+More Background information on Open5gs and Docker can be found at the sources below:
+- R. Zhang, Y. Lin, S. Chen and Z. Mo, "A Multi-Node 5G Core Network Testbed Developed from Open5GS," 2023 9th International Conference on Computer and Communications (ICCC), Chengdu, China, 2023, pp. 1038-1043, doi: 10.1109/ICCC59590.2023.10507325
+- L. Mamushiane et al., "Towards Stress Testing Open5GS Core (UPF Node) On A 5G Standalone Testbed," 2023 IEEE AFRICON, Nairobi, Kenya, 2023, pp. 1-6, doi: 10.1109/AFRICON55910.2023.10293284
+- [https://github.com/Borjis131/docker-open5gs.git](docker-open5gs git repo)
+- [https://github.com/HewlettPackard/PacketRusher](HP PacketRusher git repo)
+- [https://github.com/open5gs/open5gs](Open5gs - The original git repo)
+- [https://open5gs.org/open5gs/docs/](Open5gs - Documentation)
